@@ -1,0 +1,25 @@
+1301    //ID
+242.1   //Beam energy
+465     //Pixel or similar
+0       //Extra
+0       //Extra
+13.4    //Implantation energy
+0       //Implantation time == 0
+10.29   //First energy
+10      //Energy uncertainty
+0.366   //First time
+9.24    //Second energy
+10      //Energy uncertainty
+0.935   //Second time
+9.77    //Third energy
+10
+11.1
+0.825
+30
+0.515
+9.06
+10
+15.3
+197
+0       //Fission uncertainty == 0
+17.4
