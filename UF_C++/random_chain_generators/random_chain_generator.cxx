@@ -1,7 +1,7 @@
 //Filnamn: random_chain_generator.cxx
 //Skriven av: Ulrika Forsberg, ulrika.forsberg@nuclear.lu.se
 //Skapad datum:
-//Senast ändrad:  
+//Senast ändrad:
 //Beskrivning:
 
 #include <iostream>
@@ -33,7 +33,7 @@ const int nrOfBins = 24600;
 double binstart[nrOfBins];
 bool fill_histos = true;
 
-double tot_time = 0;  
+double tot_time = 0;
 double lifetime = 0;
 string filename = "";
 string method_string = "";
@@ -59,15 +59,15 @@ double avg[allowed_max_chain_length] = {0.0};
 int main(){
 
 	ofstream sim_chain;
-	
-	
+
+
 #include "make_histos_look_nice.cxx"
 
 
 
 	double timefactor = 1.0;
 	//cout << "timefactor? ";
-	//cin >> timefactor; 
+	//cin >> timefactor;
 	//cout << endl;
 
 	//Times as in ALL short chains
@@ -84,7 +84,7 @@ int main(){
 	average_time[5] = 8.0;
 	average_time[6] = 8.0;
 	average_time[7] = 8.0;
-       
+
 
 	double dx;
 
@@ -99,8 +99,8 @@ int main(){
 	string histoname = "";
 
 	for (int iStep = 0; iStep < max_chain_length; iStep++){
-		histoname = "h_decay_time_logbins[" + to_string(iStep) + "]";	  
-		h_decay_time_logbins[iStep] = new TH1F(histoname.c_str(),histoname.c_str(),nrOfBins-1,binstart); 
+		histoname = "h_decay_time_logbins[" + to_string(iStep) + "]";
+		h_decay_time_logbins[iStep] = new TH1F(histoname.c_str(),histoname.c_str(),nrOfBins-1,binstart);
 	}
 
 
@@ -110,13 +110,13 @@ int main(){
 	double hilim[allowed_max_chain_length] = {0.0};
 
 	for (int iStep = 0; iStep < max_chain_length; iStep++){
-		lowlim[iStep] = 0.0;  
-		hilim[iStep] = 20.0*average_time[iStep];	  
+		lowlim[iStep] = 0.0;
+		hilim[iStep] = 20.0*average_time[iStep];
 	}
 
 	for (int iStep = 0; iStep < max_chain_length; iStep++){
-		histoname = "h_tau_distrib[" + to_string(iStep) + "]";	  
-		h_tau_distrib[iStep] = new TH1F(histoname.c_str(),histoname.c_str(),1000,(int) (lowlim[iStep]+0.5),(int)(hilim[iStep]+0.5)); 
+		histoname = "h_tau_distrib[" + to_string(iStep) + "]";
+		h_tau_distrib[iStep] = new TH1F(histoname.c_str(),histoname.c_str(),1000,(int) (lowlim[iStep]+0.5),(int)(hilim[iStep]+0.5));
 	}
 
 	int method = 0;
@@ -124,7 +124,7 @@ int main(){
 	cout << "Which method to use? 1=tau_likelihood, 2=enforce_exp_tbar, 3=from_most_likely_tau: ";
 	cin >> method;
 	cout << "Number of sets to simulate: ";
-	cin >> number;    
+	cin >> number;
 	cout << "Number in each set: ";
 	cin >> nr_in_set;
 
@@ -136,25 +136,25 @@ int main(){
 	/*
 	  cout << "Missing in last step: ";
 	  cin >> nr_last_step_missing;
-	  
+
 	  nr_in_step_array[0] = nr_in_set;
 	  nr_in_step_array[1] = nr_in_set;
 	  nr_in_step_array[2] = nr_in_set - nr_last_step_missing;
 	*/
 
 
-	/*	
+	/*
 	//Dirk's four short 289-115
 	nr_in_step_array[0] = 4;
 	nr_in_step_array[1] = 4;   // ÄNDRA VILKEN MAPP SOM VI SKRIVER TILL SENARE I PROGRAMMET!!!!!
-	nr_in_step_array[2] = 4;   
-	*/	
+	nr_in_step_array[2] = 4;
+	*/
 
      	//Dirk's nine short 288-115
 	nr_in_step_array[0] = 9;
 	nr_in_step_array[1] = 9;   // ÄNDRA VILKEN MAPP SOM VI SKRIVER TILL SENARE I PROGRAMMET!!!!!
-	nr_in_step_array[2] = 5;   
-	
+	nr_in_step_array[2] = 5;
+
 
 
 
@@ -162,15 +162,15 @@ int main(){
 	//"Full" missing link, 30 events
 	nr_in_step_array[0] = 25;
 	nr_in_step_array[1] = 25;   // ÄNDRA VILKEN MAPP SOM VI SKRIVER TILL SENARE I PROGRAMMET!!!!!
-	nr_in_step_array[2] = 24;   
+	nr_in_step_array[2] = 24;
 	*/
 
 
-	/*	
+	/*
 	//E115_288
 	nr_in_step_array[0] = 3;
 	nr_in_step_array[1] = 2;   // ÄNDRA VILKEN MAPP SOM VI SKRIVER TILL SENARE I PROGRAMMET!!!!!
-	nr_in_step_array[2] = 2;   
+	nr_in_step_array[2] = 2;
 	nr_in_step_array[3] = 3;
 	nr_in_step_array[4] = 2;
 	nr_in_step_array[5] = 3;
@@ -180,7 +180,7 @@ int main(){
 	//E113_RIKEN
 	nr_in_step_array[0] = 84;
 	nr_in_step_array[1] = 83;   // ÄNDRA VILKEN MAPP SOM VI SKRIVER TILL SENARE I PROGRAMMET!!!!!
-	nr_in_step_array[2] = 84;   
+	nr_in_step_array[2] = 84;
 	nr_in_step_array[3] = 77;
 	nr_in_step_array[4] = 67;
 	nr_in_step_array[5] = 84;
@@ -190,7 +190,7 @@ int main(){
 	//E113_RIKEN
 	nr_in_step_array[0] = 3;
 	nr_in_step_array[1] = 3;   // ÄNDRA VILKEN MAPP SOM VI SKRIVER TILL SENARE I PROGRAMMET!!!!!
-	nr_in_step_array[2] = 3;   
+	nr_in_step_array[2] = 3;
 	nr_in_step_array[3] = 3;
 	nr_in_step_array[4] = 3;
 	*/
@@ -200,7 +200,7 @@ int main(){
 	//All short E117
 	nr_in_step_array[0] = 15;
 	nr_in_step_array[1] = 11;   // ÄNDRA VILKEN MAPP SOM VI SKRIVER TILL SENARE I PROGRAMMET!!!!!
-	nr_in_step_array[2] = 11;   
+	nr_in_step_array[2] = 11;
 	nr_in_step_array[3] = 14;
 	*/
 
@@ -208,7 +208,7 @@ int main(){
 	//All long E117
 	nr_in_step_array[0] = 5;
 	nr_in_step_array[1] = 5;   // ÄNDRA VILKEN MAPP SOM VI SKRIVER TILL SENARE I PROGRAMMET!!!!!
-	nr_in_step_array[2] = 6;   
+	nr_in_step_array[2] = 6;
 	nr_in_step_array[3] = 6;
 	nr_in_step_array[4] = 5;
 	nr_in_step_array[5] = 5;
@@ -218,15 +218,15 @@ int main(){
 	//V1
 	nr_in_step_array[0] = 6;
 	nr_in_step_array[1] = 5;   // ÄNDRA VILKEN MAPP SOM VI SKRIVER TILL SENARE I PROGRAMMET!!!!!
-	nr_in_step_array[2] = 6;   
+	nr_in_step_array[2] = 6;
 	nr_in_step_array[3] = 7;
 	*/
-	
+
 	/*
 	//V2
 	nr_in_step_array[0] = 6;
 	nr_in_step_array[1] = 6;   // ÄNDRA VILKEN MAPP SOM VI SKRIVER TILL SENARE I PROGRAMMET!!!!!
-	nr_in_step_array[2] = 7;   
+	nr_in_step_array[2] = 7;
 	nr_in_step_array[3] = 7;
 	*/
 
@@ -234,7 +234,7 @@ int main(){
 	//V3
 	nr_in_step_array[0] = 6;
 	nr_in_step_array[1] = 6;   // ÄNDRA VILKEN MAPP SOM VI SKRIVER TILL SENARE I PROGRAMMET!!!!!
-	nr_in_step_array[2] = 6;   
+	nr_in_step_array[2] = 6;
 	nr_in_step_array[3] = 6;
 	*/
 
@@ -242,19 +242,19 @@ int main(){
 	//V4
 	nr_in_step_array[0] = 5;
 	nr_in_step_array[1] = 5;   // ÄNDRA VILKEN MAPP SOM VI SKRIVER TILL SENARE I PROGRAMMET!!!!!
-	nr_in_step_array[2] = 7;   
+	nr_in_step_array[2] = 7;
 	nr_in_step_array[3] = 7;
 	*/
 
-	/*     
+	/*
 	//V5
 	nr_in_step_array[0] = 6;
 	nr_in_step_array[1] = 5;   // ÄNDRA VILKEN MAPP SOM VI SKRIVER TILL SENARE I PROGRAMMET!!!!!
-	nr_in_step_array[2] = 5;   
+	nr_in_step_array[2] = 5;
 	nr_in_step_array[3] = 6;
 	*/
 
-	
+
 
 
 	vector< vector<double> > time_array;
@@ -279,15 +279,15 @@ int main(){
 		cout << "Wrong method" << endl;
 		return 0;
 	}
-	
-	
+
+
 	//Prepare simulations
 	default_random_engine generator(static_cast<unsigned>(time(0)));
 
 	vector<double> hej;
-	
-	
-	
+
+
+
 
 	int counter;
 
@@ -296,11 +296,11 @@ int main(){
 
 		uniform_real_distribution<double> random_lifetime(lowlim[iStep],hilim[iStep]);
 
-		for (int i = 0; i < number;){ //"Number" is the numberof chains we want	
+		for (int i = 0; i < number;){ //"Number" is the numberof chains we want
 
 			lambda[iStep]=1.0/random_lifetime(generator);
 
-			exponential_distribution<double> random_exp_dist(lambda[iStep]); 
+			exponential_distribution<double> random_exp_dist(lambda[iStep]);
 			tot_time = 0;
 
 
@@ -311,14 +311,14 @@ int main(){
 			}
 
 			if(method == 3 || (tot_time/nr_in_step_array[iStep] >= average_time[iStep]*0.99 && tot_time/nr_in_step_array[iStep] <= average_time[iStep]*1.01)){
-				counter = 0;	      
+				counter = 0;
 
 				//Om vi kommer hit: använd tau för att generera slumptider
 
-				for (int k = 1; k <= nr_in_set; k++){	
+				for (int k = 1; k <= nr_in_set; k++){
 
-				  
-				  filename = "../E115_chains/simulated_chains/" + method_string  + "test_sim_chains/sim_chain" + to_string(k+i*nr_in_set) + ".txt";   
+
+				  filename = "../E115_chains/simulated_chains/" + method_string  + "test_sim_chains/sim_chain" + to_string(k+i*nr_in_set) + ".txt";
 
 				  //Original version for short chains
 				  //filename = "../E115_chains/simulated_chains/" + method_string  + to_string(nr_in_set) + "chains_" + to_string(nr_last_step_missing) + "missing/sim_chain" + to_string(k+i*nr_in_set) + ".txt";   //original
@@ -332,7 +332,7 @@ int main(){
 				  int timefactor_int =  (int)timefactor;
 				  filename = "../E115_chains/simulated_chains/" + method_string  + to_string(nr_in_set) + "chains_" + to_string(nr_last_step_missing) + "missing_timestimes"  + to_string(timefactor_int)  + "/sim_chain" + to_string(k+i*nr_in_set) + ".txt";   //OSB! CHANGED TO DO STRENGH FUNCTION!
 				  */
-				
+
 					if ( method == 1 ){ //1 is taus_from_tau_likelyhood
 						print_time = random_exp_dist(generator);
 					}
@@ -345,25 +345,25 @@ int main(){
 					else if (method == 3){
 						exponential_distribution<double> random_exp_dist_fixed(1.0/average_time[iStep]);
 						print_time = random_exp_dist_fixed(generator);
-						
+
 					}
-					
-					
+
+
 					if (iStep == 0){
 						sim_chain.open (filename,ios::out);
 					}
 					else {
 						sim_chain.open (filename,ios::app);
 					}
-					
-					
+
+
 					if (iStep == 0){
 						sim_chain<<i*nr_in_set+k<< endl;
 						sim_chain<<0<< endl;
 						sim_chain<<0<< endl;
 						sim_chain<<0<< endl;
 						sim_chain<<0<< endl;
-						sim_chain<<0<< endl;    
+						sim_chain<<0<< endl;
 						sim_chain<<0<< endl;
 					}
 					sim_chain<<10.0<< endl;
@@ -371,33 +371,33 @@ int main(){
 					if (iStep == max_chain_length -1){
 						if(counter < nr_in_set-nr_last_step_missing) {
 							sim_chain<<print_time<< endl;
-							h_decay_time_logbins[iStep]->Fill(print_time); 
+							h_decay_time_logbins[iStep]->Fill(print_time);
 						}
 						else {sim_chain<<0<< endl;}
 					}
 					else {
-						sim_chain<<print_time<< endl;	
+						sim_chain<<print_time<< endl;
 						h_decay_time_logbins[iStep]->Fill(print_time);
 					}
 
 					sim_chain.close();
 					counter++;
 
-					avg[iStep] += print_time; 
+					avg[iStep] += print_time;
 
-				} //Ends loop over k	
+				} //Ends loop over k
 
 
 
 				h_tau_distrib[iStep]->Fill(1.0/lambda[iStep]);
 				i++; //Increase i here, since we now have have done what we should
-				if(i%1000 == 0){cout << "We are now on " << i << endl;}   
-  
-			
+				if(i%1000 == 0){cout << "We are now on " << i << endl;}
+
+
 
 			} // Ends if statement which we enter only if the average is lifetime_1
 
-	
+
 
 
 		} //Loop over i
@@ -409,13 +409,13 @@ int main(){
 	} //Loop over iStep
 
 
-	
 
 
 
 
 
-	//Plot 
+
+	//Plot
 
 	cout << endl << "I am here! " << endl;
 	TCanvas *MyCanvas = new TCanvas("MyCanvas");
@@ -425,10 +425,10 @@ int main(){
 
 	cout << endl << "I am here! " << endl;
 
-	MyCanvas->cd(1);  
+	MyCanvas->cd(1);
 	gPad->SetLogx();
 	h_decay_time_logbins[0]->Draw();
-	ofstream times_1("times_1_from_chain_generation.txt",ios::out);		
+	ofstream times_1("times_1_from_chain_generation.txt",ios::out);
 	for(int t = 0; t < nrOfBins; t++){
 		times_1 << h_decay_time_logbins[0]->GetBinContent(t) << endl;
 	}
@@ -436,43 +436,43 @@ int main(){
 
 	cout << endl << "I am here! " << endl;
 
-	MyCanvas->cd(2);  
+	MyCanvas->cd(2);
 	gPad->SetLogx();
 	h_decay_time_logbins[1]->Draw();
-	ofstream times_2("times_2_from_chain_generation.txt",ios::out);		
+	ofstream times_2("times_2_from_chain_generation.txt",ios::out);
 	for(int t = 0; t < nrOfBins; t++){
 		times_2 << h_decay_time_logbins[1]->GetBinContent(t) << endl;
 	}
 	times_2.close();
 
-	MyCanvas->cd(3);  
+	MyCanvas->cd(3);
 	gPad->SetLogx();
 	h_decay_time_logbins[2]->Draw();
-	ofstream times_3("times_3_from_chain_generation.txt",ios::out);		
-	for(int t = 0; t < nrOfBins; t++){	
+	ofstream times_3("times_3_from_chain_generation.txt",ios::out);
+	for(int t = 0; t < nrOfBins; t++){
 		times_3 << h_decay_time_logbins[2]->GetBinContent(t) << endl;
 	}
 	times_3.close();
 
-	MyCanvas->cd(4);  
+	MyCanvas->cd(4);
 	h_tau_distrib[0]->Draw();
-	ofstream tau_1("tau_1_from_chain_generation.txt",ios::out);		
+	ofstream tau_1("tau_1_from_chain_generation.txt",ios::out);
 	for(int t = 0; t < 1000; t++){
 		tau_1 << h_tau_distrib[0]->GetBinContent(t) << endl;
 	}
 	tau_1.close();
 
-	MyCanvas->cd(5);  
+	MyCanvas->cd(5);
 	h_tau_distrib[1]->Draw();
-	ofstream tau_2("tau_2_from_chain_generation.txt",ios::out);		
+	ofstream tau_2("tau_2_from_chain_generation.txt",ios::out);
 	for(int t = 0; t < 1000; t++){
 		tau_2 << h_tau_distrib[1]->GetBinContent(t) << endl;
 	}
 	tau_2.close();
 
-	MyCanvas->cd(6);  
+	MyCanvas->cd(6);
 	h_tau_distrib[2]->Draw();
-	ofstream tau_3("tau_3_from_chain_generation.txt",ios::out);		
+	ofstream tau_3("tau_3_from_chain_generation.txt",ios::out);
 	for(int t = 0; t < 1000; t++){
 		tau_3 << h_tau_distrib[2]->GetBinContent(t) << endl;
 	}
