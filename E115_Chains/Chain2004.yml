@@ -1,0 +1,9 @@
+!DecayChain
+BeamEnergy: 245.0
+EAlpha: [10.25, 9.79, 189.0]
+EAlphaSigma: [100.0, 100.0, 0.0]
+ID: '2004'
+ImplantEnergy: 9.96
+ImplantTime: 0.0
+Pixel: 0
+TAlpha: [0.5118, 0.238, 31.66]

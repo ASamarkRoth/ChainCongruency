@@ -1,0 +1,9 @@
+!DecayChain
+BeamEnergy: 0.0
+EAlpha: [10.49, 9.94, 9.8, 9.5, 9.2, 106.0]
+EAlphaSigma: [20.0, 60.0, 50.0, 50.0, 50.0, 0.0]
+ID: '1609'
+ImplantEnergy: 7.06
+ImplantTime: 0.0
+Pixel: 0
+TAlpha: [0.0605, 0.0281, 3.46, 0.349, 1.08, 62.8728]
