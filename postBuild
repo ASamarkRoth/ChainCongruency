@@ -1,0 +1,4 @@
+#!/bin/bash
+
+jupyter nbextension enable rubberband/main
+jupyter nbextension enable --py widgetsnbextension

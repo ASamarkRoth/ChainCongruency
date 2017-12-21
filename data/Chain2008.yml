@@ -1,9 +1,9 @@
 !DecayChain
 BeamEnergy: 0.0
-EAlpha: [0.0, 9.631, 212.8]
-EAlphaSigma: [0.0, 67.0, 0.0]
+EAlpha: [11.114, 0.0, 9.631, 212.8]
+EAlphaSigma: [89.0, 0.0, 67.0, 0.0]
 ID: '2008'
 ImplantEnergy: 11.76
 ImplantTime: 0.0
 Pixel: 0
-TAlpha: [0.0, 19.0456, 1.4809]
+TAlpha: [0.153948, 0.0, 19.0456, 1.4809]
