@@ -6,7 +6,7 @@ The congruency within and between sets of decay chains of superheavy nuclei are 
 
 ## Running the Jupyter-Notebook
 
-You can run it in the web browser on mybinder (without installing anything) by clicking the link (here)[https://mybinder.org/v2/gh/ASamarkRoth/ChainCongruency/master?filepath=ChainCongruencyMain.ipynb] (ignore the following in that case). 
+You can run it in the web browser on mybinder (without installing anything) by clicking the link [here](https://mybinder.org/v2/gh/ASamarkRoth/ChainCongruency/master?filepath=ChainCongruencyMain.ipynb) (ignore the following in that case). 
 
 It is possible to run the notebook on your local computer as follows:
 
